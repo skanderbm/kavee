@@ -1,6 +1,6 @@
 // Dimensions of sunburst.
-var width = 750;
-var height = 600;
+var width = 1000;
+var height = 900;
 var radius = Math.min(width, height) / 2;
 
 // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
@@ -15,7 +15,7 @@ var colors = {
   "fresh returning high": "#de783b",
   "habitual high": "#6ab975",
   "lapsed returning": "#a173d1",
-  "end": "#bbbbbb"
+  "end": "#999999"
 };
 
 // Total size of all segments; we set this later, after loading the data.
@@ -63,7 +63,7 @@ function createVisualization(json) {
   // For efficiency, filter nodes to keep only those large enough to see.
   var nodes = partition.nodes(json)
       .filter(function(d) {
-      return (d.dx > 0.005); // 0.005 radians = 0.29 degrees
+      return (d.dx > 0.0005); // 0.005 radians = 0.29 degrees
       });
 
   var path = vis.data([json]).selectAll("path")
@@ -222,7 +222,7 @@ function drawLegend() {
 
   // Dimensions of legend item: width, height, spacing, radius of rounded rect.
   var li = {
-    w: 100, h: 30, s: 3, r: 3
+    w: 140, h: 30, s: 3, r: 3
   };
 
   var legend = d3.select("#legend").append("svg:svg")
